@@ -1,4 +1,4 @@
 cube
 ====
 
-Send expvars to Cube for visualization.
+Send Go expvars to Cube for visualization.

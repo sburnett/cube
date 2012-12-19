@@ -1,6 +1,7 @@
 /*
-	Package cube exports expvars to a Cube Collector. This is handy if you want
-	to create dashboards for visualizing statistics about long-running programs.
+	Package cube periodically sends expvars to a Cube Collector. This is handy
+	if you want to create dashboards for visualizing statistics about
+	long-running programs.
 
 	You must first install and run a Cube collector. See
 	http://square.github.com/cube/
