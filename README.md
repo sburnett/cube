@@ -1,4 +1,4 @@
-go-cube
-=======
+cube
+====
 
-Send expvars to Cube for visualization
+Send expvars to Cube for visualization.
