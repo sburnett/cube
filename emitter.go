@@ -11,9 +11,9 @@
 		package main
 
 		import (
-			"cube"
 			"expvar"
 			"flags"
+			"github.com/sburnett/cube"
 		)
 
 		func main() {
