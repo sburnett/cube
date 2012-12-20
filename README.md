@@ -12,9 +12,8 @@ do this by subtracting the previous minute's counter:
 
     function metricPerSecond(metric) {
         var current = cube.metric(metric),
-            shift = current.shift(-60 * 1000),
-            change = current.subtract(shift).divide(60);
-        return change;
+            shift = current.shift(-60 * 1000);
+        return current.subtract(shift).divide(60);
     }
 
     // ... Set up your graphs ...
