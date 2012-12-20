@@ -64,10 +64,12 @@ func Run(collectionType string) {
 	}
 	log.Printf("Exporting variables every %v", interval)
 
+	exportCounter := expvar.NewInt("cube.Exports")
 	for now := range time.Tick(interval) {
 		if err := ExportVariablesWithTimestamp(collectionType, putUrl, now); err != nil {
 			log.Printf("Error exporting variables for %v", now)
 		}
+		exportCounter.Add(1)
 	}
 }
 
