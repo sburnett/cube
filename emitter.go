@@ -110,6 +110,6 @@ func ExportVariablesWithTimestamp(collectionType string, putUrl string, timestam
 		log.Printf("The request we tried to post: %v", request)
 		return err
 	}
-	defer response.Close()
+	defer response.Body.Close()
 	return nil
 }
