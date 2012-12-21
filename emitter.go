@@ -104,11 +104,12 @@ func ExportVariablesWithTimestamp(collectionType string, putUrl string, timestam
 		timestamp.Format(time.ANSIC),
 		strings.Join(variables, ","))
 
-	_, err := http.Post(putUrl, "application/json", bytes.NewBufferString(request))
+	response, err := http.Post(putUrl, "application/json", bytes.NewBufferString(request))
 	if err != nil {
 		log.Printf("Error POSTing events to Cube collector: %v", err)
 		log.Printf("The request we tried to post: %v", request)
 		return err
 	}
+	defer response.Close()
 	return nil
 }
