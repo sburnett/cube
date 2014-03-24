@@ -23,7 +23,7 @@
 			// Now create and use expvars.
 		}
 
- */
+*/
 package cube
 
 import (
@@ -40,11 +40,13 @@ import (
 var flagCollectorHost string
 var flagCollectorPort int
 var flagExportInterval string
+var flagExportToCube bool
 
 func init() {
 	flag.StringVar(&flagCollectorHost, "cube_collector_host", "localhost", "Export variables to this Cube collector.")
 	flag.IntVar(&flagCollectorPort, "cube_collector_port", 1080, "Use this port when connecting to the Cube collector.")
 	flag.StringVar(&flagExportInterval, "cube_export_interval", "10s", "Export variables to Cube once every interval.")
+	flag.BoolVar(&flagExportToCube, "cube_export", true, "Whether or not to export variables to Cube.")
 }
 
 // Periodically export variables from expvar to a Cube collector. This function
@@ -55,6 +57,10 @@ func init() {
 // Cube using the cube_collector_host, cube_collector_port and
 // cube_export_interval flags.
 func Run(collectionType string) {
+	if !flagExportToCube {
+		return
+	}
+
 	putUrl := fmt.Sprintf("http://%s:%d/1.0/event/put", flagCollectorHost, flagCollectorPort)
 	log.Printf("Exporting expvars to %s with event type %s", putUrl, collectionType)
 
